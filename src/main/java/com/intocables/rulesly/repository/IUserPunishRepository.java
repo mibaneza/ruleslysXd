@@ -16,6 +16,6 @@ public interface IUserPunishRepository extends JpaRepository<UserPunishEntity, D
 	//String USER_PUNISH_CACHE = "userpunishchebyall";
 	
 	//@Cacheable(cacheNames=USER_PUNISH_CACHE )
-	@Query(value = "SELECT DATE_FORMAT(added, '%Y-%m-%d %T') AS added, type, reason FROM user_punish", nativeQuery = true)
-	Optional<List<UserPunishEntity>> findSqlAll();
+	@Query(value = "SELECT DATE_FORMAT(up.added, '%Y-%m-%d %T') AS added, up.type, up.reason FROM user_punish as up ORDER BY up.added DESC", nativeQuery = true)
+	List<UserPunishEntity> findSqlAll();
 }
