@@ -29,7 +29,6 @@ public class UserPunishRestController {
 	public  static final  String ok = "OK";
 	@Autowired
 	UserPunishService _UserPunishService;
-	
 	@GetMapping(value="Gaaaaaa", produces = MediaType.APPLICATION_JSON_VALUE)
 	public RuleslyResponse<List<UserPunishDto>> readGetUserPunish() throws RuleslyException, ParseException{
 		return new RuleslyResponse<>(succes, String.valueOf(HttpStatus.OK), ok,
