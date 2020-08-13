@@ -42,7 +42,7 @@ class aea {
 		System.out.print(_QuantityxAddedDtos);
 	}*/
 	@Test
-	 public void arrayss() throws Exception{
+	void arrayss() {
 		/*List<Object> ga = erPunhisRepository.findSQLByQuantityAndAddeds();
 		List<Object> lsts = new ArrayList<Object>();
 		for(Object ls: ga) {
