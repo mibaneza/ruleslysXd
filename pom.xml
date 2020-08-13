@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.intocables.rulesly</groupId>
 	<artifactId>ruleslys</artifactId>
@@ -16,6 +17,9 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<sonar.projectKey>mibaneza_ruleslysXd</sonar.projectKey>
+		<sonar.organization>mibaneza</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencies>
@@ -23,12 +27,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
 			<version>2.9.0</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
@@ -53,6 +57,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.7.0.1746</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -60,6 +69,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.7.0.1746</version>
 			</plugin>
 		</plugins>
 	</build>
