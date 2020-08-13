@@ -1,26 +1,26 @@
 package com.intocables.rulesly.tests;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.HashMap;
+//import java.util.HashSet;
+//import java.util.Iterator;
+//import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+//import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-import com.intocables.rulesly.dto.QuantityxAddedDto;
+//import com.intocables.rulesly.dto.QuantityxAddedDto;
 import com.intocables.rulesly.repository.IUserPunishRepository;
 
 
 @SpringBootTest
-public class aea {
+class aea {
 	@Autowired
 	IUserPunishRepository erPunhisRepository;
 	
@@ -42,7 +42,7 @@ public class aea {
 		System.out.print(_QuantityxAddedDtos);
 	}*/
 	@Test
-	public void arrayss() throws Exception{
+	 void arrayss() throws Exception{
 		/*List<Object> ga = erPunhisRepository.findSQLByQuantityAndAddeds();
 		List<Object> lsts = new ArrayList<Object>();
 		for(Object ls: ga) {
