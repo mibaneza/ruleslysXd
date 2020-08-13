@@ -16,10 +16,10 @@ public class UserPunishDto implements Serializable{
 	private String reason;
 	//patron n capas enfocada al dominio
 	
-	public UserPunishDto(UserPunishEntity _UserPunishEntity) {
-		this.added = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(_UserPunishEntity.getAdded());
-		this.type = _UserPunishEntity.getType();
-		this.reason = _UserPunishEntity.getReason();
+	public UserPunishDto(UserPunishEntity userPunishEntity) {
+		this.added = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(userPunishEntity.getAdded());
+		this.type = userPunishEntity.getType();
+		this.reason = userPunishEntity.getReason();
 	}
 	
 	public UserPunishDto(String added, String type, String reason) {

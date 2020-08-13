@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class AverageDto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public int average;
+	private int average;
 
 	public AverageDto(int average) {
 		this.average = average;
