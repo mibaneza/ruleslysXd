@@ -11,7 +11,7 @@ import com.intocables.rulesly.dto.QuantityxAddedDto;
 
 @Component
 public class QuantityPunishMapper {
-	public static List<QuantityxAddedDto> mapper (List<Object[]>  quantityPunishEntitys){
+	public List<QuantityxAddedDto> mapper (List<Object[]>  quantityPunishEntitys){
 		List<QuantityxAddedDto> quantityxAddedDtos = new ArrayList<>();
 	for(Object[] obj : quantityPunishEntitys) {
 		quantityxAddedDtos.add(new QuantityxAddedDto(((BigInteger) obj[0]).intValue(),(String) obj[1]));

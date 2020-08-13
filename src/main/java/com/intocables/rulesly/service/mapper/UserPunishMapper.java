@@ -11,7 +11,7 @@ import com.intocables.rulesly.entity.UserPunishEntity;
 @Component
 public class UserPunishMapper {
 
-	public static List<UserPunishDto> mapper (List<UserPunishEntity> userPunishEntitys){
+	public List<UserPunishDto> mapper (List<UserPunishEntity> userPunishEntitys){
 		
 		List<UserPunishDto> userPunishDtos = new ArrayList<>();
 		for(UserPunishEntity _UserPunishEntity : userPunishEntitys){

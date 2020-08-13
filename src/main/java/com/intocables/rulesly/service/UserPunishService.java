@@ -28,6 +28,12 @@ public class UserPunishService {
 	private static final String INTERNALERROR = "INTERNAL_SERVER_ERROR";
 	
 	@Autowired
+	UserPunishMapper userPunishMapper;
+	
+	@Autowired
+	QuantityPunishMapper quantityPunishMapper;
+	
+	@Autowired
 	IUserPunishRepository userPunhisRepository;
 	
 	@Transactional(readOnly=true)
@@ -43,7 +49,7 @@ public class UserPunishService {
 		}
 		
 				
-		return UserPunishMapper.mapper(userPunishEntitys);
+		return userPunishMapper.mapper(userPunishEntitys);
 	}
 	@Transactional(readOnly=true)
 	@Cacheable(value = "quantityAndAddedsCache")
@@ -58,7 +64,7 @@ public class UserPunishService {
 		}
 		
 				
-		return QuantityPunishMapper.mapper(quantityxAddedDtos);
+		return quantityPunishMapper.mapper(quantityxAddedDtos);
 	}
 	@Transactional(readOnly=true)
 	@Cacheable(value = "averageCache")
