@@ -61,9 +61,7 @@ public class UserPunishService {
 		} catch (final Exception e) {
 			LOGGER.error(INTERNALERROR);
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
-		}
-		
-				
+		}			
 		return quantityPunishMapper.mapper(quantityxAddedDtos);
 	}
 	@Transactional(readOnly=true)
@@ -77,8 +75,8 @@ public class UserPunishService {
 			LOGGER.error(INTERNALERROR);
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
 		}
-		int days = 90;
-		AverageDto averageDto = new AverageDto(quantityxAddedDtos.intValue()/days);
+		int days = quantityxAddedDtos.intValue()/90;
+		AverageDto averageDto = new AverageDto(days);
 	
 		return averageDto;
 	}
