@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intocables.rulesly.dto.AverageDto;
 import com.intocables.rulesly.dto.QuantityxAddedDto;
 import com.intocables.rulesly.dto.UserPunishDto;
 import com.intocables.rulesly.service.UserPunishService;
@@ -37,7 +36,7 @@ public class UserPunishRestController {
 				userPunishService.findSQLByQuantityAndAddeds());
 	}
 	@GetMapping(value="Raaaaaaa", produces = MediaType.APPLICATION_JSON_VALUE)
-	public RuleslyResponse<AverageDto> readGetAverage() throws RuleslyException{
+	public RuleslyResponse<Integer> readGetAverage() throws RuleslyException{
 		return new RuleslyResponse<>(SUCCES, String.valueOf(HttpStatus.OK), OK,
 				userPunishService.findSQLAverage());
 	}

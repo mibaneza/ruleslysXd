@@ -10,7 +10,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.intocables.rulesly.dto.AverageDto;
 import com.intocables.rulesly.dto.QuantityxAddedDto;
 import com.intocables.rulesly.dto.UserPunishDto;
 import com.intocables.rulesly.entity.UserPunishEntity;
@@ -66,7 +65,7 @@ public class UserPunishService {
 	}
 	@Transactional(readOnly=true)
 	@Cacheable(value = "averageCache")
-	public AverageDto findSQLAverage() throws RuleslyException{		
+	public int findSQLAverage() throws RuleslyException{		
 		BigInteger quantityxAddedDtos;
 		try {
 			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantity();
@@ -75,9 +74,6 @@ public class UserPunishService {
 			LOGGER.error(INTERNALERROR);
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
 		}
-		int days = quantityxAddedDtos.intValue()/90;
-		AverageDto averageDto = new AverageDto(days);
-	
-		return averageDto;
+		return quantityxAddedDtos.intValue()/90;
 	}
 }
