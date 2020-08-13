@@ -26,14 +26,14 @@ public class UserPunishService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserPunishService.class);
 	
 	@Autowired
-	IUserPunishRepository _IUserPunhisRepository;
+	IUserPunishRepository userPunhisRepository;
 	
 	@Transactional(readOnly=true)
 	@Cacheable(value = "usersPunishCache")
 	public List<UserPunishDto> findAllUserPunish() throws RuleslyException{		
-		List<UserPunishEntity> _UserPunishEntitys;
+		List<UserPunishEntity> userPunishEntitys;
 		try {
-			 _UserPunishEntitys = _IUserPunhisRepository.findSqlAll();
+			 userPunishEntitys = userPunhisRepository.findSqlAll();
 			 
 		} catch (final Exception e) {
 			LOGGER.error("INTERNAL_SERVER_ERROR");
@@ -41,14 +41,14 @@ public class UserPunishService {
 		}
 		
 				
-		return UserPunishMapper.mapper(_UserPunishEntitys);
+		return UserPunishMapper.mapper(userPunishEntitys);
 	}
 	@Transactional(readOnly=true)
 	@Cacheable(value = "quantityAndAddedsCache")
 	public List<QuantityxAddedDto> findSQLByQuantityAndAddeds() throws RuleslyException{		
-		List<Object[]> _QuantityxAddedDtos;
+		List<Object[]> quantityxAddedDtos;
 		try {
-			 _QuantityxAddedDtos = _IUserPunhisRepository.findSQLByQuantityAndAddeds();
+			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantityAndAddeds();
 			 
 		} catch (final Exception e) {
 			LOGGER.error("INTERNAL_SERVER_ERROR");
@@ -56,22 +56,22 @@ public class UserPunishService {
 		}
 		
 				
-		return QuantityPunishMapper.mapper(_QuantityxAddedDtos);
+		return QuantityPunishMapper.mapper(quantityxAddedDtos);
 	}
 	@Transactional(readOnly=true)
 	@Cacheable(value = "averageCache")
 	public AverageDto findSQLAverage() throws RuleslyException{		
-		BigInteger _QuantityxAddedDtos;
+		BigInteger quantityxAddedDtos;
 		try {
-			 _QuantityxAddedDtos = _IUserPunhisRepository.findSQLByQuantity();
+			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantity();
 			 
 		} catch (final Exception e) {
 			LOGGER.error("INTERNAL_SERVER_ERROR");
 			throw new InternalServerErrorException("INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
 		}
 		int days = 90;
-		AverageDto _AverageDto = new AverageDto(_QuantityxAddedDtos.intValue()/days);
+		AverageDto averageDto = new AverageDto(quantityxAddedDtos.intValue()/days);
 	
-		return _AverageDto;
+		return averageDto;
 	}
 }

@@ -9,13 +9,13 @@ import com.intocables.rulesly.entity.UserPunishEntity;
 
 public class UserPunishMapper {
 
-	public static List<UserPunishDto> mapper (List<UserPunishEntity> _UserPunishEntitys){
+	public static List<UserPunishDto> mapper (List<UserPunishEntity> userPunishEntitys){
 		
-		List<UserPunishDto> _UserPunishDtos = new ArrayList<UserPunishDto>();
-		for(UserPunishEntity _UserPunishEntity : _UserPunishEntitys){
-			_UserPunishDtos.add(new UserPunishDto(_UserPunishEntity));
+		List<UserPunishDto> userPunishDtos = new ArrayList<UserPunishDto>();
+		for(UserPunishEntity _UserPunishEntity : userPunishEntitys){
+			userPunishDtos.add(new UserPunishDto(_UserPunishEntity));
 		}
-		return _UserPunishDtos;
+		return userPunishDtos;
 	}
 	
 

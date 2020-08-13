@@ -1,6 +1,9 @@
 package com.intocables.rulesly.dto;
 
-public class AverageDto {
+import java.io.Serializable;
+
+public class AverageDto implements Serializable {
+	private static final long serialVersionUID = 1L;
 	public int average;
 
 	public AverageDto(int average) {

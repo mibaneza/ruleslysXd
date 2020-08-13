@@ -25,23 +25,23 @@ import com.intocables.rulesly.service.message.RuleslyResponse;
 @RestController
 @RequestMapping("/31574849548976465468764002013123411/")
 public class UserPunishRestController {
-	public  static final  String succes = "Succes";
-	public  static final  String ok = "OK";
+	public  static final  String SUCCES = "Succes";
+	public  static final  String OK = "OK";
 	@Autowired
-	UserPunishService _UserPunishService;
+	UserPunishService userPunishService;
 	@GetMapping(value="Gaaaaaa", produces = MediaType.APPLICATION_JSON_VALUE)
-	public RuleslyResponse<List<UserPunishDto>> readGetUserPunish() throws RuleslyException, ParseException{
-		return new RuleslyResponse<>(succes, String.valueOf(HttpStatus.OK), ok,
-				_UserPunishService.findAllUserPunish());
+	public RuleslyResponse<List<UserPunishDto>> readGetUserPunish() throws RuleslyException{
+		return new RuleslyResponse<>(SUCCES, String.valueOf(HttpStatus.OK), OK,
+				userPunishService.findAllUserPunish());
 	}
 	@GetMapping(value="aea", produces = MediaType.APPLICATION_JSON_VALUE)
-	public RuleslyResponse<List<QuantityxAddedDto>> readGetQuantityPunish() throws RuleslyException, ParseException{
-		return new RuleslyResponse<>(succes, String.valueOf(HttpStatus.OK), ok,
-				_UserPunishService.findSQLByQuantityAndAddeds());
+	public RuleslyResponse<List<QuantityxAddedDto>> readGetQuantityPunish() throws RuleslyException{
+		return new RuleslyResponse<>(SUCCES, String.valueOf(HttpStatus.OK), OK,
+				userPunishService.findSQLByQuantityAndAddeds());
 	}
 	@GetMapping(value="Raaaaaaa", produces = MediaType.APPLICATION_JSON_VALUE)
-	public RuleslyResponse<AverageDto> readGetAverage() throws RuleslyException, ParseException{
-		return new RuleslyResponse<>(succes, String.valueOf(HttpStatus.OK), ok,
-				_UserPunishService.findSQLAverage());
+	public RuleslyResponse<AverageDto> readGetAverage() throws RuleslyException{
+		return new RuleslyResponse<>(SUCCES, String.valueOf(HttpStatus.OK), OK,
+				userPunishService.findSQLAverage());
 	}
 }
