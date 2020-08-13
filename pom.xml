@@ -16,7 +16,7 @@
 	<description>Api rest</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<sonar.projectKey>mibaneza_ruleslysXd</sonar.projectKey>
 		<sonar.organization>mibaneza</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
