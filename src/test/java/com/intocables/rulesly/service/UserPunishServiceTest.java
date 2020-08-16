@@ -17,6 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ import com.intocables.rulesly.dto.UserPunishDto;
 import com.intocables.rulesly.entity.UserPunishEntity;
 import com.intocables.rulesly.repository.IUserPunishRepository;
 import com.intocables.rulesly.service.exception.RuleslyException;
+import com.intocables.rulesly.service.mapper.UserPunishMapper;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 @SpringBootTest
@@ -42,6 +44,9 @@ class UserPunishServiceTest {
 	@InjectMocks
 	UserPunishService userPunishService;
 	
+	@Mock
+	UserPunishMapper userPunishMapper;
+	
 	BigInteger integar;
 	
 	@BeforeEach
@@ -50,26 +55,37 @@ class UserPunishServiceTest {
 	}
 	
 	@Test
-	void findAllUserPunishTest() throws RuleslyException{
+	void findAllUserPunishTest() throws RuleslyException, ParseException{
 		   Date result = null;
-		    try{
+		   Date resulta = null;
+		   Date resultad = null;
+		   String dateFormats = null;
+		   List<UserPunishDto> userpunishdto = new ArrayList<>();
+		   List<UserPunishDto> userpunishdtos = new ArrayList<>();
+		
 		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		       
 		        result  = dateFormat.parse("2015-12-06 17:03:00");
-		    }
-
-		    catch(ParseException e){
-		        e.printStackTrace();
-
-		    }
-		    System.out.print(result);
-		 List<UserPunishEntity> userpunishlist = new ArrayList<>();
-		userpunishlist.add( new UserPunishEntity(result,"awdawd","awdawdwadawd"));
-
+		        resulta  = dateFormat.parse("2015-12-06 17:03:00");
+		        
+		         dateFormats = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(resulta);
+	
+	
+		 List<UserPunishEntity> userpunishlist = new ArrayList<>() ;
+		userpunishlist.add( new UserPunishEntity(result,"ADVERT","Monchin (steam:110000112c1afbc) fue"));
+		userpunishlist.add( new UserPunishEntity(resulta,"BANNED","LUZBELITOO (steam:1100001063de14f"));
+		
+		userpunishdtos.add( new UserPunishDto("2016-12-06 17:03:00","ADVERT","Monchin (steam:110000112c1afbc) fue"));
+		userpunishdtos.add( new UserPunishDto("2015-12-06 17:03:00","BANNED","LUZBELITOO (steam:1100001063de14f"));
 		Mockito.when(userPunhisRepository.findSqlAll()).thenReturn(userpunishlist);
-		 List<UserPunishDto> userpunishdto = userPunishService.findAllUserPunish();
+		Mockito.when(userPunishMapper.mapper(userpunishlist)).thenReturn(userpunishdtos);;
+		
+		userpunishdto = userPunishService.findAllUserPunish();
+
+		 System.out.println(userpunishdto.size());
 		assertNotNull(userpunishdto);
 		assertFalse(userpunishdto.isEmpty());
-		assertEquals(0,userpunishdto.size());
+		assertEquals(2,userpunishdto.size());
 		
 		
 			

@@ -36,12 +36,15 @@ public class UserPunishService {
 	@Cacheable(value = "usersPunishCache")
 	public List<UserPunishDto> findAllUserPunish() throws RuleslyException{		
 		List<UserPunishEntity> userPunishEntitys;
+		List<UserPunishDto> userPunishDto;
 		try {
 			 userPunishEntitys = userPunhisRepository.findSqlAll();
+			
 		} catch (final Exception e) {
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
-		}			
-		return userPunishMapper.mapper(userPunishEntitys);
+		}	
+		 userPunishDto = userPunishMapper.mapper(userPunishEntitys);
+		return userPunishDto;
 	}
 	
 	@Transactional(readOnly=true)
