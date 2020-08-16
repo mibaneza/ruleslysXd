@@ -1,5 +1,0 @@
- addons:
-   sonarcloud:
-     organization: "asus-aics"
-     token:
-       secure: 51cf9ad5e7533f04fcfff3164de4c92c43b8f1fb
