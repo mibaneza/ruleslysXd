@@ -34,6 +34,13 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
+      - name: TestReport jacoco
+        run: mvn jacoco:report-integration
+      - name: TestReport Aggregate
+        run: mvn jacoco:report-aggregate
+      - name: Test Report
+        run: mvn jacoco:report
       - name: Build and analyze
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage
         env:
