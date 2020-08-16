@@ -40,7 +40,7 @@ class UserPunishRestControllerTest {
 	}
 	
 	@Test
-	public void readGetAverageTest() throws RuleslyException{
+	void readGetAverageTest() throws RuleslyException{
 		final RuleslyResponse<Integer> response = userPunishRestController.readGetAverage();
 		assertEquals(SUCCES_STATUS, response.getStatus());
 		assertEquals(SUCCES_CODE, response.getCode());
@@ -48,7 +48,7 @@ class UserPunishRestControllerTest {
 		assertEquals((int) 85,response.getData());
 	}
 	@Test
-	public void readGetUserPunishTest() throws RuleslyException{
+	void readGetUserPunishTest() throws RuleslyException{
 		final RuleslyResponse<List<UserPunishDto>> response = userPunishRestController.readGetUserPunish();
 		assertEquals(SUCCES_STATUS, response.getStatus());
 		assertEquals(SUCCES_CODE, response.getCode());
@@ -56,7 +56,7 @@ class UserPunishRestControllerTest {
 		assertEquals(USERPUNISHDTO,response.getData());
 	}
 	@Test
-	public void readGetQuantityPunishTest() throws RuleslyException{
+	void readGetQuantityPunishTest() throws RuleslyException{
 		final RuleslyResponse<List<QuantityxAddedDto>> response = userPunishRestController.readGetQuantityPunish();
 		assertEquals(SUCCES_STATUS, response.getStatus());
 		assertEquals(SUCCES_CODE, response.getCode());

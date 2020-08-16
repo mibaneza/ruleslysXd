@@ -38,15 +38,12 @@ public class UserPunishService {
 		List<UserPunishEntity> userPunishEntitys;
 		try {
 			 userPunishEntitys = userPunhisRepository.findSqlAll();
-			 
 		} catch (final Exception e) {
-		
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
-		}
-		
-				
+		}			
 		return userPunishMapper.mapper(userPunishEntitys);
 	}
+	
 	@Transactional(readOnly=true)
 	@Cacheable(value = "quantityAndAddedsCache")
 	public List<QuantityxAddedDto> findSQLByQuantityAndAddeds() throws RuleslyException{		
@@ -60,15 +57,14 @@ public class UserPunishService {
 		}			
 		return quantityPunishMapper.mapper(quantityxAddedDtos);
 	}
+	
 	@Transactional(readOnly=true)
 	@Cacheable(value = "averageCache")
 	public int findSQLAverage() throws RuleslyException{		
 		BigInteger quantityxAddedDtos;
 		try {
-			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantity();
-			 
+			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantity();	 
 		} catch (final Exception e) {
-			
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
 		}
 		return quantityxAddedDtos.intValue()/90;
