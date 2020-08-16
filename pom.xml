@@ -212,7 +212,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-eclipse-plugin</artifactId>
-                     <version>3.8.1</version>
+                     <version>3.2.0</version>
                     <configuration>
                         <downloadSources>true</downloadSources>
                         <downloadJavadocs>true</downloadJavadocs>
@@ -223,7 +223,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-idea-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.2.0</version>
                     <configuration>
                         <exclude>node_modules</exclude>
                     </configuration>
@@ -235,7 +235,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.2.0</version>
                     <executions>
                         <execution>
                             <id>default-resources</id>
