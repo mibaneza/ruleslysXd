@@ -22,8 +22,7 @@ import  com.intocables.rulesly.service.exception.InternalServerErrorException;
 
 @Service
 public class UserPunishService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserPunishService.class);
-	
+
 	private static final String INTERNALERROR = "INTERNAL_SERVER_ERROR";
 	
 	@Autowired
@@ -43,7 +42,7 @@ public class UserPunishService {
 			 userPunishEntitys = userPunhisRepository.findSqlAll();
 			 
 		} catch (final Exception e) {
-			LOGGER.error(INTERNALERROR);
+		
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
 		}
 		
@@ -58,7 +57,7 @@ public class UserPunishService {
 			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantityAndAddeds();
 			 
 		} catch (final Exception e) {
-			LOGGER.error(INTERNALERROR);
+	
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
 		}			
 		return quantityPunishMapper.mapper(quantityxAddedDtos);
@@ -71,7 +70,7 @@ public class UserPunishService {
 			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantity();
 			 
 		} catch (final Exception e) {
-			LOGGER.error(INTERNALERROR);
+			
 			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
 		}
 		return quantityxAddedDtos.intValue()/90;

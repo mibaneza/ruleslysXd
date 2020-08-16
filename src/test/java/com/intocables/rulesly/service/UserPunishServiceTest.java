@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigInteger;
 
+
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -28,6 +30,8 @@ class UserPunishServiceTest {
 	
 	BigInteger integar;
 	
+	
+	
 	@BeforeEach
 	public void init() throws RuleslyException{
 		MockitoAnnotations.initMocks(this);
@@ -41,12 +45,13 @@ class UserPunishServiceTest {
 	}
 	@Test
 	public void findSQLAverageTestError()throws RuleslyException{
-		Mockito.when(userPunhisRepository.findSQLByQuantity()).thenReturn(null);
-		
-		Assertions.assertThrows(RuleslyException.class, () -> {
+		Mockito.when(userPunhisRepository.findSQLByQuantity()).thenReturn(new BigInteger("0"));
+
+		Assertions.assertThrows(NumberFormatException.class, () -> {
 			integar = new BigInteger("");
 		    });
-		 
 		userPunishService.findSQLAverage();
+	
+		
 	}
 }
