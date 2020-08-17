@@ -15,6 +15,8 @@ public class ErrorDto implements Serializable{
 		this.value = value;
 	}
 
+	public ErrorDto() {}
+
 	public String getName() {
 		return name;
 	}

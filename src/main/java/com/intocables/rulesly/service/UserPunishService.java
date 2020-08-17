@@ -12,16 +12,17 @@ import com.intocables.rulesly.dto.QuantityxAddedDto;
 import com.intocables.rulesly.dto.UserPunishDto;
 import com.intocables.rulesly.entity.UserPunishEntity;
 import com.intocables.rulesly.repository.IUserPunishRepository;
-import com.intocables.rulesly.service.exception.RuleslyException;
 import com.intocables.rulesly.service.mapper.QuantityPunishMapper;
 import com.intocables.rulesly.service.mapper.UserPunishMapper;
 
-import  com.intocables.rulesly.service.exception.InternalServerErrorException;
+import com.intocables.rulesly.service.exception.NotFountException;
+import com.intocables.rulesly.service.exception.RuleslyException;
 
 @Service
 public class UserPunishService {
 
 	private static final String INTERNALERROR = "INTERNAL_SERVER_ERROR";
+	private static final String SNOT404 = "SNOT-404-1";
 	
 	@Autowired
 	UserPunishMapper userPunishMapper;
@@ -37,12 +38,8 @@ public class UserPunishService {
 	public List<UserPunishDto> findAllUserPunish() throws RuleslyException{		
 		List<UserPunishEntity> userPunishEntitys;
 		List<UserPunishDto> userPunishDto;
-		try {
-			 userPunishEntitys = userPunhisRepository.findSqlAll();
-			
-		} catch (final Exception e) {
-			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
-		}	
+			 userPunishEntitys = userPunhisRepository.findSqlAll()
+					 .orElseThrow(() -> new NotFountException(SNOT404, INTERNALERROR));	
 		 userPunishDto = userPunishMapper.mapper(userPunishEntitys);
 		return userPunishDto;
 	}
@@ -50,26 +47,24 @@ public class UserPunishService {
 	@Transactional(readOnly=true)
 	@Cacheable(value = "quantityAndAddedsCache")
 	public List<QuantityxAddedDto> findSQLByQuantityAndAddeds() throws RuleslyException{		
-		List<Object[]> quantityxAddedDtos;
-		try {
-			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantityAndAddeds();
-			 
-		} catch (final Exception e) {
-	
-			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
-		}			
-		return quantityPunishMapper.mapper(quantityxAddedDtos);
+		List<Object[]> objectAnom;
+		List<QuantityxAddedDto> quantityxAddedDto;
+
+		objectAnom = userPunhisRepository.findSQLByQuantityAndAddeds()
+					 .orElseThrow(() -> new NotFountException(SNOT404, INTERNALERROR));	
+			 quantityxAddedDto = quantityPunishMapper.mapper(objectAnom);
+			
+		return quantityxAddedDto;
 	}
 	
 	@Transactional(readOnly=true)
 	@Cacheable(value = "averageCache")
 	public int findSQLAverage() throws RuleslyException{		
 		BigInteger quantityxAddedDtos;
-		try {
-			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantity();	 
-		} catch (final Exception e) {
-			throw new InternalServerErrorException(INTERNALERROR, INTERNALERROR);
-		}
+
+			 quantityxAddedDtos = userPunhisRepository.findSQLByQuantity()
+					 .orElseThrow(() -> new NotFountException(SNOT404, INTERNALERROR));	 
+		
 		return quantityxAddedDtos.intValue()/90;
 	}
 }
