@@ -1,4 +1,4 @@
-package com.intocables.rulesly.entity;
+package com.intocables.rulesly.domain;
 
 
 
@@ -11,6 +11,8 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.intocables.rulesly.domain.UserPunish;
 
 @SpringBootTest
 class UserPunishTest {
@@ -26,69 +28,69 @@ class UserPunishTest {
 	
 	@Test
 	void setAddedTest() throws  NoSuchFieldException, IllegalAccessException, ParseException {
-	final UserPunishEntity userPunishEntity = new UserPunishEntity();
+	final UserPunish userPunish = new UserPunish();
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat(formatadded);
 		Date fecha = dateFormat.parse(addedvalue);
-		userPunishEntity.setAdded(fecha);
+		userPunish.setAdded(fecha);
 
-		final Field field = userPunishEntity.getClass().getDeclaredField(added);
+		final Field field = userPunish.getClass().getDeclaredField(added);
 		field.setAccessible(true);
 			
-		assertEquals(field.get(userPunishEntity), fecha);
+		assertEquals(field.get(userPunish), fecha);
 		
 	}
 	@Test
 	void getAddedTest() throws  NoSuchFieldException, IllegalAccessException, ParseException {
-		final UserPunishEntity userPunishEntity = new UserPunishEntity();
-		final Field field = userPunishEntity.getClass().getDeclaredField(added);
+		final UserPunish userPunish = new UserPunish();
+		final Field field = userPunish.getClass().getDeclaredField(added);
 		SimpleDateFormat dateFormat = new SimpleDateFormat(formatadded);
 		Date fecha = dateFormat.parse(addedvalue);
 		field.setAccessible(true);
-		field.set(userPunishEntity, fecha);
+		field.set(userPunish, fecha);
 		
-		final Date results = userPunishEntity.getAdded();
+		final Date results = userPunish.getAdded();
 		
 		assertEquals(results,fecha);
 	}
 	@Test
 	void setTypeTest() throws NoSuchFieldException, IllegalAccessException {
-		final UserPunishEntity userPunishEntity = new UserPunishEntity();
+		final UserPunish userPunish = new UserPunish();
 		
-		userPunishEntity.setType(typevalue);
-		final Field field = userPunishEntity.getClass().getDeclaredField(type);
+		userPunish.setType(typevalue);
+		final Field field = userPunish.getClass().getDeclaredField(type);
 		field.setAccessible(true);
-		assertEquals(field.get(userPunishEntity),typevalue);
+		assertEquals(field.get(userPunish),typevalue);
 	}
 	
 	@Test
 	void getTypeTest() throws NoSuchFieldException, IllegalAccessException {
-		final UserPunishEntity userPunishEntity = new UserPunishEntity();
-		final Field field = userPunishEntity.getClass().getDeclaredField(type);
+		final UserPunish userPunish = new UserPunish();
+		final Field field = userPunish.getClass().getDeclaredField(type);
 		
 		field.setAccessible(true);
-		field.set(userPunishEntity, typevalue);
-		result = userPunishEntity.getType();
+		field.set(userPunish, typevalue);
+		result = userPunish.getType();
 		assertEquals(result,typevalue);
 
 	}
 	@Test
 	void setReasonTest() throws NoSuchFieldException, IllegalAccessException {
-		final UserPunishEntity userPunishEntity = new UserPunishEntity();
-		userPunishEntity.setReason(reasonvalue);
-		final Field field = userPunishEntity.getClass().getDeclaredField(reason);
+		final UserPunish userPunish = new UserPunish();
+		userPunish.setReason(reasonvalue);
+		final Field field = userPunish.getClass().getDeclaredField(reason);
 		field.setAccessible(true);
-		assertEquals(field.get(userPunishEntity),reasonvalue);
+		assertEquals(field.get(userPunish),reasonvalue);
 	}
 
 	@Test
 	void getReasonTest() throws NoSuchFieldException, IllegalAccessException {
-		final UserPunishEntity userPunishEntity = new UserPunishEntity();
-		final Field field = userPunishEntity.getClass().getDeclaredField(reason);
+		final UserPunish userPunish = new UserPunish();
+		final Field field = userPunish.getClass().getDeclaredField(reason);
 		
 		field.setAccessible(true);
-		field.set(userPunishEntity, reasonvalue);
-		result = userPunishEntity.getReason();
+		field.set(userPunish, reasonvalue);
+		result = userPunish.getReason();
 		assertEquals(result, reasonvalue);
 	}
 

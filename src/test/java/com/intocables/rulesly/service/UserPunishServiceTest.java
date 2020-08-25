@@ -26,10 +26,10 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
 
-import com.intocables.rulesly.dto.QuantityxAddedDto;
-import com.intocables.rulesly.dto.UserPunishDto;
-import com.intocables.rulesly.entity.UserPunishEntity;
+import com.intocables.rulesly.domain.UserPunish;
 import com.intocables.rulesly.repository.IUserPunishRepository;
+import com.intocables.rulesly.service.dto.QuantityxAddedDTO;
+import com.intocables.rulesly.service.dto.UserPunishDTO;
 import com.intocables.rulesly.service.exception.RuleslyException;
 import com.intocables.rulesly.service.mapper.QuantityPunishMapper;
 import com.intocables.rulesly.service.mapper.UserPunishMapper;
@@ -52,7 +52,7 @@ class UserPunishServiceTest {
 	
 	BigInteger integar;
 	
-	UserPunishEntity userPunishEntity;
+	UserPunish userPunish;
 
 	@BeforeEach
 	void init() throws RuleslyException {
@@ -63,8 +63,8 @@ class UserPunishServiceTest {
 	void findAllUserPunishTest() throws RuleslyException, ParseException {
 		Date result = null;
 		Date resulta = null;
-		List<UserPunishDto> userpunishdto = new ArrayList<>();
-		List<UserPunishDto> userpunishdtos = new ArrayList<>();
+		List<UserPunishDTO> userpunishdto = new ArrayList<>();
+		List<UserPunishDTO> userpunishdtos = new ArrayList<>();
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -72,12 +72,12 @@ class UserPunishServiceTest {
 		resulta = dateFormat.parse("2015-12-06 17:03:00");
 
 		
-		List<UserPunishEntity> userpunishlist = new ArrayList<>();
-		userpunishlist.add(new UserPunishEntity(result, "ADVERT", "Monchin (steam:110000112c1afbc) fue"));
-		userpunishlist.add(new UserPunishEntity(resulta, "BANNED", "LUZBELITOO (steam:1100001063de14f"));
+		List<UserPunish> userpunishlist = new ArrayList<>();
+		userpunishlist.add(new UserPunish(result, "ADVERT", "Monchin (steam:110000112c1afbc) fue"));
+		userpunishlist.add(new UserPunish(resulta, "BANNED", "LUZBELITOO (steam:1100001063de14f"));
 
-		userpunishdtos.add(new UserPunishDto("2016-12-06 17:03:00", "ADVERT", "Monchin (steam:110000112c1afbc) fue"));
-		userpunishdtos.add(new UserPunishDto("2015-12-06 17:03:00", "BANNED", "LUZBELITOO (steam:1100001063de14f"));
+		userpunishdtos.add(new UserPunishDTO("2016-12-06 17:03:00", "ADVERT", "Monchin (steam:110000112c1afbc) fue"));
+		userpunishdtos.add(new UserPunishDTO("2015-12-06 17:03:00", "BANNED", "LUZBELITOO (steam:1100001063de14f"));
 		Mockito.when(userPunhisRepository.findSqlAll()).thenReturn(Optional.of(userpunishlist));
 		Mockito.when(userPunishMapper.mapper(userpunishlist)).thenReturn(userpunishdtos);
 		
@@ -110,22 +110,22 @@ class UserPunishServiceTest {
 	@Test
 	void findSQLByQuantityAndAddedsTest() throws RuleslyException {
 		List<Object[]> objectAnom = new ArrayList<>();		
-		List<QuantityxAddedDto> quantityxAddedDto = new ArrayList<>();
-		List<QuantityxAddedDto> quantityxAddedDtos = new ArrayList<>();
+		List<QuantityxAddedDTO> quantityxAddedDTO = new ArrayList<>();
+		List<QuantityxAddedDTO> quantityxAddedDTOs = new ArrayList<>();
 		Object[] e = {new BigInteger("25"),"2015-12-06"} ;
 		Object[] ei = {new BigInteger("26"),"2015-13-06"} ;
 		objectAnom.add(e);
 		objectAnom.add(ei);
-		quantityxAddedDto.add(new QuantityxAddedDto(25,"2015-12-06"));
-		quantityxAddedDto.add(new QuantityxAddedDto(26,"2015-13-06"));
+		quantityxAddedDTO.add(new QuantityxAddedDTO(25,"2015-12-06"));
+		quantityxAddedDTO.add(new QuantityxAddedDTO(26,"2015-13-06"));
 		Mockito.when(userPunhisRepository.findSQLByQuantityAndAddeds()).thenReturn(Optional.of(objectAnom));
-		Mockito.when(quantityPunishMapper.mapper(objectAnom)).thenReturn(quantityxAddedDto);
+		Mockito.when(quantityPunishMapper.mapper(objectAnom)).thenReturn(quantityxAddedDTO);
 		
-		quantityxAddedDtos = userPunishService.findSQLByQuantityAndAddeds();
+		quantityxAddedDTOs = userPunishService.findSQLByQuantityAndAddeds();
 
-		assertNotNull(quantityxAddedDtos);
-		assertFalse(quantityxAddedDtos.isEmpty());
-		assertEquals(2, quantityxAddedDtos.size());
+		assertNotNull(quantityxAddedDTOs);
+		assertFalse(quantityxAddedDTOs.isEmpty());
+		assertEquals(2, quantityxAddedDTOs.size());
 		
 	}
 	

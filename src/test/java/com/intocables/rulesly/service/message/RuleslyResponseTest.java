@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.intocables.rulesly.dto.ErrorDto;
+import com.intocables.rulesly.service.dto.ErrorDTO;
 
 
 @SpringBootTest
@@ -46,9 +46,9 @@ class RuleslyResponseTest {
 
 	@Test
 	void setDataTest() throws NoSuchFieldException, IllegalAccessException {
-		final RuleslyResponse<List<ErrorDto>> response = new RuleslyResponse<List<ErrorDto>>(null,null,null,null);
-		final List<ErrorDto> errorLists = new ArrayList<>();
-		errorLists.add(new ErrorDto("ERROR", "404"));
+		final RuleslyResponse<List<ErrorDTO>> response = new RuleslyResponse<List<ErrorDTO>>(null,null,null,null);
+		final List<ErrorDTO> errorLists = new ArrayList<>();
+		errorLists.add(new ErrorDTO("ERROR", "404"));
 		
 		response.setData(errorLists);
 		final Field field = response.getClass().getDeclaredField("data");

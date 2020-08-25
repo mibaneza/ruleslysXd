@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.http.HttpStatus;
 
-import com.intocables.rulesly.dto.ErrorDto;
+import com.intocables.rulesly.service.dto.ErrorDTO;
 
 public class NotFountException extends RuleslyException{
 
@@ -15,7 +15,7 @@ public class NotFountException extends RuleslyException{
 		super(code, STATUS, message);
 	}
 	
-	public NotFountException(String code, String message, ErrorDto data) {
+	public NotFountException(String code, String message, ErrorDTO data) {
 		super(code, STATUS, message, Arrays.asList(data));
 	}
 

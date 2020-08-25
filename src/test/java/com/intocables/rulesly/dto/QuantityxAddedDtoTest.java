@@ -7,6 +7,8 @@ import java.lang.reflect.Field;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.intocables.rulesly.service.dto.QuantityxAddedDTO;
+
 @SpringBootTest
 class QuantityxAddedDtoTest {
 
@@ -14,44 +16,44 @@ class QuantityxAddedDtoTest {
 	final String date = "date";
 	final String quantity = "quantity";
 	final int quantityvalue = 50;
-	final QuantityxAddedDto quantityxAddedDto = new QuantityxAddedDto();
+	final QuantityxAddedDTO quantityxAddedDTO = new QuantityxAddedDTO();
 	int results;
 	String result;
 	
 	@Test
 	void getQuantity() throws  NoSuchFieldException, IllegalAccessException{
-		final Field field = quantityxAddedDto.getClass().getDeclaredField(quantity);
+		final Field field = quantityxAddedDTO.getClass().getDeclaredField(quantity);
 		
 		field.setAccessible(true);
-		field.set(quantityxAddedDto, quantityvalue);
-		results = quantityxAddedDto.getQuantity();
+		field.set(quantityxAddedDTO, quantityvalue);
+		results = quantityxAddedDTO.getQuantity();
 		assertEquals(results, quantityvalue);
 	}
 	
 	@Test
 	void setQuantity() throws  NoSuchFieldException, IllegalAccessException{
-		quantityxAddedDto.setQuantity(quantityvalue);
-		final Field field = quantityxAddedDto.getClass().getDeclaredField(quantity);
+		quantityxAddedDTO.setQuantity(quantityvalue);
+		final Field field = quantityxAddedDTO.getClass().getDeclaredField(quantity);
 		field.setAccessible(true);
-		assertEquals(field.get(quantityxAddedDto),quantityvalue);
+		assertEquals(field.get(quantityxAddedDTO),quantityvalue);
 	}
 	
 	@Test
 	void getDate() throws  NoSuchFieldException, IllegalAccessException{
-		final Field field = quantityxAddedDto.getClass().getDeclaredField(date);
+		final Field field = quantityxAddedDTO.getClass().getDeclaredField(date);
 		
 		field.setAccessible(true);
-		field.set(quantityxAddedDto, datevalue);
-		 result = quantityxAddedDto.getDate();
+		field.set(quantityxAddedDTO, datevalue);
+		 result = quantityxAddedDTO.getDate();
 		assertEquals(result, datevalue);
 	}
 	
 	@Test
 	void setDate() throws  NoSuchFieldException, IllegalAccessException{
-		quantityxAddedDto.setDate(datevalue);
-		final Field field = quantityxAddedDto.getClass().getDeclaredField(date);
+		quantityxAddedDTO.setDate(datevalue);
+		final Field field = quantityxAddedDTO.getClass().getDeclaredField(date);
 		field.setAccessible(true);
-		assertEquals(field.get(quantityxAddedDto),datevalue);
+		assertEquals(field.get(quantityxAddedDTO),datevalue);
 	}
 
 }

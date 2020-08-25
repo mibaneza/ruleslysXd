@@ -15,9 +15,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-import com.intocables.rulesly.dto.UserPunishDto;
-import com.intocables.rulesly.entity.UserPunishEntity;
+import com.intocables.rulesly.domain.UserPunish;
+import com.intocables.rulesly.service.dto.UserPunishDTO;
 
 
 @SpringBootTest
@@ -28,18 +27,18 @@ class UserPunishMapperTest {
 	@Test
 	void mapper() throws ParseException {
 		Date result = null;
-		List<UserPunishEntity> userPunishEntity = new ArrayList<>();
-		List<UserPunishDto> userPunishDtos = new ArrayList<>();
+		List<UserPunish> userPunish = new ArrayList<>();
+		List<UserPunishDTO> userPunishDTOs = new ArrayList<>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		result = dateFormat.parse("2015-12-06 17:03:00");
 		
-		userPunishEntity.add(new UserPunishEntity(result, "ADVERT", "Monchin (steam:110000112c1afbc) fue"));
-		userPunishDtos = userPunishMapper.mapper(userPunishEntity);
+		userPunish.add(new UserPunish(result, "ADVERT", "Monchin (steam:110000112c1afbc) fue"));
+		userPunishDTOs = userPunishMapper.mapper(userPunish);
 		
 		
-		assertNotNull(userPunishDtos);
-		assertFalse(userPunishDtos.isEmpty());
-		assertEquals(1, userPunishDtos.size());
+		assertNotNull(userPunishDTOs);
+		assertFalse(userPunishDTOs.isEmpty());
+		assertEquals(1, userPunishDTOs.size());
 	}
 
 }

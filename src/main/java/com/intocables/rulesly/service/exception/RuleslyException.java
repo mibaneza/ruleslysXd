@@ -3,7 +3,7 @@ package com.intocables.rulesly.service.exception;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.intocables.rulesly.dto.ErrorDto;
+import com.intocables.rulesly.service.dto.ErrorDTO;
 
 public class RuleslyException extends Exception{
 	private static final long serialVersionUID = 1L;
@@ -12,7 +12,7 @@ public class RuleslyException extends Exception{
 	
 	private final int responseCode;
 	
-	private final List<ErrorDto> errorList = new ArrayList<>();
+	private final List<ErrorDTO> errorList = new ArrayList<>();
 
 
 	public RuleslyException(String code, int responseCode, String message) {
@@ -21,7 +21,7 @@ public class RuleslyException extends Exception{
 		this.responseCode = responseCode;
 	}
 
-	public RuleslyException(String code, int responseCode, String message, List<ErrorDto> errorList) {
+	public RuleslyException(String code, int responseCode, String message, List<ErrorDTO> errorList) {
 		super(message);
 		this.code = code;
 		this.responseCode = responseCode;
@@ -35,7 +35,7 @@ public class RuleslyException extends Exception{
 		return responseCode;
 	}
 
-	public List<ErrorDto> getErrorList() {
+	public List<ErrorDTO> getErrorList() {
 		return errorList;
 	}
 	

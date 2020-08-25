@@ -6,18 +6,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.intocables.rulesly.dto.UserPunishDto;
-import com.intocables.rulesly.entity.UserPunishEntity;
+import com.intocables.rulesly.domain.UserPunish;
+import com.intocables.rulesly.service.dto.UserPunishDTO;
 @Component
 public class UserPunishMapper {
 
-	public List<UserPunishDto> mapper (List<UserPunishEntity> userPunishEntitys){
+	public List<UserPunishDTO> mapper (List<UserPunish> userPunishEntitys){
 		
-		List<UserPunishDto> userPunishDtos = new ArrayList<>();
-		for(UserPunishEntity _UserPunishEntity : userPunishEntitys){
-			userPunishDtos.add(new UserPunishDto(_UserPunishEntity));
+		List<UserPunishDTO> userPunishDTOs = new ArrayList<>();
+		for(UserPunish _UserPunishEntity : userPunishEntitys){
+			userPunishDTOs.add(new UserPunishDTO(_UserPunishEntity));
 		}
-		return userPunishDtos;
+		return userPunishDTOs;
 	}
 	
 

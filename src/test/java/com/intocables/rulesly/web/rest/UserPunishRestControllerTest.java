@@ -1,4 +1,4 @@
-package com.intocables.rulesly.controller;
+package com.intocables.rulesly.web.rest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,25 +13,26 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.intocables.rulesly.dto.QuantityxAddedDto;
-import com.intocables.rulesly.dto.UserPunishDto;
 import com.intocables.rulesly.service.UserPunishService;
+import com.intocables.rulesly.service.dto.QuantityxAddedDTO;
+import com.intocables.rulesly.service.dto.UserPunishDTO;
 import com.intocables.rulesly.service.exception.RuleslyException;
 import com.intocables.rulesly.service.message.RuleslyResponse;
+import com.intocables.rulesly.web.rest.UserPunishResource;
 
 @SpringBootTest
 class UserPunishRestControllerTest {
 	private static final String SUCCES_STATUS ="Succes";
 	private static final String SUCCES_CODE ="200 OK";
 	private static final String OK ="OK";
-	private static final List<UserPunishDto> USERPUNISHDTO = new ArrayList<>();
-	private static final List<QuantityxAddedDto> QUANTITYADDEDDTO = new ArrayList<>();
+	private static final List<UserPunishDTO> USERPUNISHDTO = new ArrayList<>();
+	private static final List<QuantityxAddedDTO> QUANTITYADDEDDTO = new ArrayList<>();
 	
 	@Mock
 	UserPunishService userPunishService;
 	
 	@InjectMocks
-	UserPunishRestController userPunishRestController;
+	UserPunishResource userPunishResource;
 	
 	@BeforeEach
 	public void init() throws RuleslyException{
@@ -41,7 +42,7 @@ class UserPunishRestControllerTest {
 	
 	@Test
 	void readGetAverageTest() throws RuleslyException{
-		final RuleslyResponse<Integer> response = userPunishRestController.readGetAverage();
+		final RuleslyResponse<Integer> response = userPunishResource.readGetAverage();
 		assertEquals(SUCCES_STATUS, response.getStatus());
 		assertEquals(SUCCES_CODE, response.getCode());
 		assertEquals(OK, response.getMessage());
@@ -49,7 +50,7 @@ class UserPunishRestControllerTest {
 	}
 	@Test
 	void readGetUserPunishTest() throws RuleslyException{
-		final RuleslyResponse<List<UserPunishDto>> response = userPunishRestController.readGetUserPunish();
+		final RuleslyResponse<List<UserPunishDTO>> response = userPunishResource.readGetUserPunish();
 		assertEquals(SUCCES_STATUS, response.getStatus());
 		assertEquals(SUCCES_CODE, response.getCode());
 		assertEquals(OK, response.getMessage());
@@ -57,7 +58,7 @@ class UserPunishRestControllerTest {
 	}
 	@Test
 	void readGetQuantityPunishTest() throws RuleslyException{
-		final RuleslyResponse<List<QuantityxAddedDto>> response = userPunishRestController.readGetQuantityPunish();
+		final RuleslyResponse<List<QuantityxAddedDTO>> response = userPunishResource.readGetQuantityPunish();
 		assertEquals(SUCCES_STATUS, response.getStatus());
 		assertEquals(SUCCES_CODE, response.getCode());
 		assertEquals(OK, response.getMessage());

@@ -13,7 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.intocables.rulesly.dto.QuantityxAddedDto;
+import com.intocables.rulesly.service.dto.QuantityxAddedDTO;
 
 @SpringBootTest
 class QuantityPunishMapperTest {
@@ -24,14 +24,14 @@ class QuantityPunishMapperTest {
 	@Test
 	void mapper() {
 		List<Object[]> objectAnom = new ArrayList<>();
-		List<QuantityxAddedDto> quantityxAddedDtos = new ArrayList<>();
+		List<QuantityxAddedDTO> quantityxAddedDTOs = new ArrayList<>();
 		Object[] e = {new BigInteger("25"),"2015-12-06"};
 		objectAnom.add(e);
-		quantityxAddedDtos = quantityPunishMapper.mapper(objectAnom);
+		quantityxAddedDTOs = quantityPunishMapper.mapper(objectAnom);
 		
-		assertNotNull(quantityxAddedDtos);
-		assertFalse(quantityxAddedDtos.isEmpty());
-		assertEquals(1, quantityxAddedDtos.size());
+		assertNotNull(quantityxAddedDTOs);
+		assertFalse(quantityxAddedDTOs.isEmpty());
+		assertEquals(1, quantityxAddedDTOs.size());
 	}
 
 }

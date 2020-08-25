@@ -1,17 +1,17 @@
-package com.intocables.rulesly.dto;
+package com.intocables.rulesly.service.dto;
 
 import java.io.Serializable;
 
-public class QuantityxAddedDto implements Serializable{
+public class QuantityxAddedDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int quantity;
 	private String date;
-	public QuantityxAddedDto(int quantity, String date) {
+	public QuantityxAddedDTO(int quantity, String date) {
 		this.quantity =  quantity;
 		this.date = date;
 	}
 	
-	public QuantityxAddedDto() {	}
+	public QuantityxAddedDTO() {	}
 
 	public int getQuantity() {
 		return quantity;

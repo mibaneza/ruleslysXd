@@ -1,11 +1,11 @@
-package com.intocables.rulesly.dto;
+package com.intocables.rulesly.service.dto;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
-import com.intocables.rulesly.entity.UserPunishEntity;
+import com.intocables.rulesly.domain.UserPunish;
 
-public class UserPunishDto implements Serializable{
+public class UserPunishDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -16,19 +16,19 @@ public class UserPunishDto implements Serializable{
 	private String reason;
 	//patron n capas enfocada al dominio
 	
-	public UserPunishDto(UserPunishEntity userPunishEntity) {
-		this.added = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(userPunishEntity.getAdded());
-		this.type = userPunishEntity.getType();
-		this.reason = userPunishEntity.getReason();
+	public UserPunishDTO(UserPunish userPunish) {
+		this.added = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(userPunish.getAdded());
+		this.type = userPunish.getType();
+		this.reason = userPunish.getReason();
 	}
 	
-	public UserPunishDto(String added, String type, String reason) {
+	public UserPunishDTO(String added, String type, String reason) {
 		this.added = added;
 		this.type = type;
 		this.reason = reason;
 	}
 	
-	public UserPunishDto() {}
+	public UserPunishDTO() {}
 
 	public String getAdded() {
 		return added;

@@ -1,8 +1,8 @@
-package com.intocables.rulesly.dto;
+package com.intocables.rulesly.service.dto;
 
 import java.io.Serializable;
 
-public class ErrorDto implements Serializable{
+public class ErrorDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -10,12 +10,12 @@ public class ErrorDto implements Serializable{
 	
 	private String value;
 
-	public ErrorDto(String name, String value) {
+	public ErrorDTO(String name, String value) {
 		this.name = name;
 		this.value = value;
 	}
 
-	public ErrorDto() {}
+	public ErrorDTO() {}
 
 	public String getName() {
 		return name;

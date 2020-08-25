@@ -1,4 +1,4 @@
-package com.intocables.rulesly.entity;
+package com.intocables.rulesly.domain;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ import org.hibernate.annotations.Immutable;
 @Entity
 @Table(name = "user_punish")
 @Immutable
-public class UserPunishEntity {
+public class UserPunish {
 
     @Id
 	@Temporal(TemporalType.TIMESTAMP)
@@ -27,9 +27,9 @@ public class UserPunishEntity {
     @Column(nullable = false)
 	private String reason;
 
-	public UserPunishEntity() {}
+	public UserPunish() {}
 
-	public UserPunishEntity(Date added, String type, String reason) {
+	public UserPunish(Date added, String type, String reason) {
 		this.added = added;
 		this.type = type;
 		this.reason = reason;
